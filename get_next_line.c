@@ -86,7 +86,7 @@ int				get_next_line(const int fd, char **line)
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		buf[ret] = '\0';
-		if(!(curr->content = ft_strjoin(curr->content, buf)))
+		if (!(curr->content = ft_strjoin(curr->content, buf)))
 			return (-1);
 		if (ft_strchr(buf, '\n'))
 			break ;
