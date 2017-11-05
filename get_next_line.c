@@ -14,21 +14,21 @@
 
 char			*ft_strjoinch(char const *s1, char c)
 {
-	char	*new_str;
+	char	*str;
 	size_t	i;
 	size_t	len;
 	
 	if (!s1 || !c)
 		return (NULL);
 	len = ft_strlen(s1);
-	new_str = ft_strnew(len + 1);
-	if (!new_str)
+	str = ft_strnew(len + 1);
+	if (!str)
 		return (NULL);
 	i = -1;
 	while (++i < len)
-		*(new_str + i) = *(s1 + i);
-	*(new_str + i) = c;
-	return (new_str);
+		*(str + i) = *(s1 + i);
+	*(str + i) = c;
+	return (str);
 }
 
 int				ft_copyuntil(char **dst, char *src, char c)
@@ -79,7 +79,8 @@ int				get_next_line(const int fd, char **line)
 	int				ret;
 	t_list			*curr;
 	
-	if ((fd < 0 || line == NULL || read(fd, buf, 0) < 0) || !(*line = ft_strnew(1)))
+	if ((fd < 0 || line == NULL || read(fd, buf, 0) < 0)
+		|| !(*line = ft_strnew(1)))
 		return (-1);
 	curr = correct_file(&file, fd);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
